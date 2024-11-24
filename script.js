@@ -28,18 +28,60 @@
 // const PersonCl = class {}
 
 // class declaration
-class PersonCl {
-  constructor(firstName, birthYear) {
-    this.birthYear = firstName;
-    this.birthYear = birthYear;
+// class PersonCl {
+//   constructor(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   }
+
+//   calcAge() {
+//     console.log(2045 - this.birthYear);
+//   }
+
+//   greet() {
+//     console.log(`Hey ${this.firstName}`);
+//   }
+// }
+// const erdogan = new PersonCl('Erdogan', 1998);
+// console.log(erdogan);
+// erdogan.calcAge();
+
+// console.log(erdogan.__proto__ === PersonCl.prototype);
+
+// // PersonCl.prototype.greet = function () {
+// //   console.log(`Hey ${this.firstName}`);
+// // };
+// erdogan.greet();
+
+//---------------------------------------------------------------------
+
+// PROJECT -- 2 --
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
   }
 
-  calcAge() {
-    console.log(2045 - this.birthYear);
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
   }
 }
-const erdogan = new PersonCl('Erdogan', 1998);
-console.log(erdogan);
-erdogan.calcAge();
-
-console.log(erdogan.__proto__ === PersonCl.prototype);
+const ford = new CarCl('Ford', 130);
+console.log(ford.speedUS);
+ford.accelerate();
+ford.accelerate();
+ford.brake();
+ford.speedUS = 50;
+console.log(ford);
