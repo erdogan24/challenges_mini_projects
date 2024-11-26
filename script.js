@@ -129,50 +129,51 @@
 
 // ---------------------------------------------------------------------------
 
-// class Account {
-//   constructor(owner, currency, pin) {
-//     this.owner = owner;
-//     this.currency = currency;
-//     this._pin = pin;
-//     this._movements = [];
-//     this.locale = navigator.language;
+class Account {
+  locale = navigator.language;
+  _movements = [];
 
-//     console.log(`thanks for opening an account,${owner}`);
-//   }
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this._pin = pin;
 
-//   getMovements() {
-//     return this._movements;
-//   }
+    console.log(`thanks for opening an account,${owner}`);
+  }
 
-//   deposit(val) {
-//     this._movements.push(val);
-//   }
+  getMovements() {
+    return this._movements;
+  }
 
-//   withdraw(val) {
-//     this.deposit(-val);
-//   }
+  deposit(val) {
+    this._movements.push(val);
+  }
 
-//   _approveLoan(val) {
-//     return true;
-//   }
+  withdraw(val) {
+    this.deposit(-val);
+  }
 
-//   requestLoan(val) {
-//     if (this._approveLoan(value)) {
-//       this.deposit(val);
-//       console.log(`Loan approved`);
-//     }
-//   }
-// }
-// const acc1 = new Account('Erdogan', 'EUR', 2222);
+  _approveLoan(val) {
+    return true;
+  }
 
-// // acc1.movements.push(400);
-// // acc1.movements.push(-150);
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+    }
+  }
+}
+const acc1 = new Account('Erdogan', 'EUR', 2222);
 
-// acc1.deposit(300);
-// acc1.withdraw(150);
-// acc1.requestLoan(1000);
-// acc1.approveLoan(1000);
-// console.log(acc1.getMovements());
+// acc1.movements.push(400);
+// acc1.movements.push(-150);
 
-// console.log(acc1);
-// console.log(acc1._pin);
+acc1.deposit(300);
+acc1.withdraw(150);
+acc1.requestLoan(1000);
+acc1._approveLoan(1000);
+console.log(acc1.getMovements());
+
+console.log(acc1);
+console.log(acc1._pin);
